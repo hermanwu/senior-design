@@ -1,8 +1,8 @@
 <?php
- $dbhost = "localhost";
- $dbuser = "cding9_hw";
- $dbpass = "cding9";
- $dbname = "cding9_unispon";
+ $dbhost = "www.unispon.com";
+ $dbuser = "cding9_admin";
+ $dbpass = "unisponadmin";
+ $dbname = "cding9_dev";
  $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
  
  if(mysqli_connect_errno()){
