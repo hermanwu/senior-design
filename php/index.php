@@ -16,7 +16,7 @@
 
 <html>
  <head>
-  <title>PHP Test</title>
+  <title>araont</title>
  </head>
  <body>
  <?php echo '<p>Hello World</p>'; ?> 
