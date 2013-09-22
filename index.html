@@ -285,20 +285,21 @@
 			<h4 class="modal-title"><strong style="color: black">Login</strong> <small>to <strong style="color: grey">Uni</strong>Spon.com</small></h4>
 		  </div>
 		  <div class="modal-body" style="padding-bottom: 0px;">
-			<form class="form-horizontal">
+			<form class="form-horizontal" action='php/login.php' method='POST'>
 			  <div class="form-group">
 				<label for="inputEmail" class="col-lg-2 control-label">Email</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+				  <input type="text" class="form-control" id="inputEmail" name="username" placeholder="Email">
 				</div>
 			  </div>
 			  <div class="form-group">
 				<label for="inputPassword" class="col-lg-2 control-label">Password</label>
 				<div class="col-lg-10">
-				  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+				  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
 				  <div class="checkbox">
 					<label>
 					  <input type="checkbox"> Remember me
+					  <input type='submit' value='Log in'>
 					</label>
 				  </div>
 				</div>

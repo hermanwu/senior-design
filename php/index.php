@@ -1,24 +1,16 @@
-<?php
- $dbhost = "www.unispon.com";
- $dbuser = "cding9_admin";
- $dbpass = "unisponadmin";
- $dbname = "cding9_dev";
- $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
- 
- if(mysqli_connect_errno()){
-	die("Database connection failed: " .
-	     mysqli_connect_error().
-		 " (" . mysqli_connect_errno() . ")"
-		 );
- }
-?>
-
-
 <html>
+<<<<<<< HEAD
  <head>
   <title>araont</title>
  </head>
  <body>
  <?php echo '<p>Hello World</p>'; ?> 
  </body>
+=======
+	<form action='login.php' method='POST'>
+		Username:<input type='text' name='username'><br>
+		Password:<input type='password' name='password'><br>
+		<input type='submit' value='Log in'>
+	</form>
+>>>>>>> More update
 </html>
