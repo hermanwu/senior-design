@@ -5,17 +5,17 @@ CREATE DATABASE if not exists Unispon
 /*create four tables*/
 CREATE TABLE if not exists unispon.USER
 (
-UserId int NOT NULL UNIQUE,
-Username nvarchar(40) NOT NULL,
+UserId int NOT NULL AUTO_INCREMENT UNIQUE,
+Username nvarchar(40) NOT NULL UNIQUE,
 Password nvarchar(40) NOT NULL,
-Email nvarchar(100),
+Email nvarchar(100) UNIQUE,
 Primary Key (UserId)
 );
 
 
 CREATE TABLE if not exists unispon.Organization
 (
-OrganizationId int NOT NULL UNIQUE,
+OrganizationId int NOT NULL AUTO_INCREMENT UNIQUE,
 UserId int NOT NULL,
 OrganizationSize int,
 OrganizationName nvarchar(100) NOT NULL,
@@ -27,7 +27,7 @@ Foreign Key (UserId) REFERENCES USER(UserId)
 
 CREATE TABLE if not exists Unispon.Company
 (
-CompanyId int NOT NULL UNIQUE,
+CompanyId int NOT NULL AUTO_INCREMENT UNIQUE,
 UserId int NOT NULL,
 CompanyName nvarchar(100) NOT NULL,
 Primary Key (CompanyId),
@@ -36,7 +36,7 @@ Foreign Key (UserId) REFERENCES USER(UserId)
 
 CREATE TABLE if not exists Unispon.Package
 (
-PackageId int NOT NULL UNIQUE,
+PackageId int NOT NULL AUTO_INCREMENT UNIQUE,
 PackageName nvarchar(100) NOT NULL,
 OrganizationId int NOT NULL,
 CompanyId int,
@@ -49,10 +49,10 @@ Foreign Key (OrganizationId) REFERENCES Organization(OrganizationId)
 
 /* create context*/
 
-INSERT INTO `user`(`UserId`, `Username`, `Password`, `Email`) VALUES (0,'admin','unispon','zwu36@gatech.edu');
+INSERT INTO `user`(`Username`, `Password`, `Email`) VALUES ('admin','unispon','zwu36@gatech.edu');
 
-INSERT INTO `organization`(`OrganizationId`,`UserId`, `OrganizationSize`, `OrganizationName`, `School`, `OrganizationDescription`) VALUES (0,0,200,'Chinese Student Association','Georgia Tech','Chinese student association is awesome');
+INSERT INTO `organization`(`UserId`, `OrganizationSize`, `OrganizationName`, `School`, `OrganizationDescription`) VALUES (1,200,'Chinese Student Association','Georgia Tech','Chinese student association is awesome');
 
-INSERT INTO `company`(`companyid`,`UserId`, `CompanyName`) VALUES (0,0,'Liberty Mutual');
+INSERT INTO `company`(`UserId`, `CompanyName`) VALUES (1,'Liberty Mutual');
 
-INSERT INTO `package`(`packageId`,`PackageName`, `OrganizationId`, `CompanyId`, `Details`, `Price`) VALUES (0,'dragon boat festival',0,null,'boat boat boat',100);
+INSERT INTO `package`(`PackageName`, `OrganizationId`, `CompanyId`, `Details`, `Price`) VALUES ('dragon boat festival',1,null,'boat boat boat',100);
