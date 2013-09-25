@@ -14,4 +14,8 @@
 		Organization Name:<input type='text' name='organizationname'><br>
 		<input type='submit' name='submit' value='Get Organization Details'>
 	</form>
+	<form action='getCompanyDetails.php' method='POST'>
+		Company Name:<input type='text' name='companyname'><br>
+		<input type='submit' name='submit' value='Get Company Details'>
+	</form>
 </html>
