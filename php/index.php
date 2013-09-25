@@ -10,4 +10,8 @@
 		New email:<input type='text' name='newemail'><br>
 		<input type='submit' name='submit' value='Register'>
 	</form>
+	<form action='getOrganizationDetails.php' method='POST'>
+		Organization Name:<input type='text' name='organizationname'><br>
+		<input type='submit' name='submit' value='Get Organization Details'>
+	</form>
 </html>
