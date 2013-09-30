@@ -24,7 +24,7 @@ if($submit)
 			{
 				echo "Here is the Description for " . $companyname.  ": ";
 				echo "<br>";
-				echo $row['CompanyName'];
+				echo $row['CompanyDescription'];
 				echo "<br>";
 				$check = 1;
 			}

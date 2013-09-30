@@ -30,6 +30,7 @@ CREATE TABLE if not exists Company
 CompanyId int NOT NULL AUTO_INCREMENT UNIQUE,
 UserId int NOT NULL,
 CompanyName nvarchar(100) NOT NULL,
+CompanyDescription longtext,
 Primary Key (CompanyId),
 Foreign Key (UserId) REFERENCES USER(UserId)
 );
