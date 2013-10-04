@@ -39,8 +39,19 @@
 
   ga('create', 'UA-42935217-2', 'unispon.com');
   ga('send', 'pageview');
-
-</script>
+  
+  function login()
+  {
+	var name = $('#inputEmail').val();
+	var age = $('#inputPassword').val();
+	
+	$.post('validate.php',{postname:name,postage:age},
+	function(data)
+	{
+		$('#reult').html(data);
+	});
+  }
+  </script>
 	
   </head>
 
@@ -63,7 +74,7 @@
     <div class="navbar-wrapper">
       <div class="container">
 
-        <div id="navbar-example" class="navbar navbar-fixed-bottom">
+        <div id="navbar-example" class="navbar navbar-fixed-top">
     	    <button id="mobileMenu" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
     	      <span class="icon-bar"></span>
     	      <span class="icon-bar"></span>
@@ -80,12 +91,6 @@
                 <li id="contactBtn"><a href="#contact">Contact Us</a></li>
               </ul>
 			  <ul class="nav navbar-nav pull-right">
-                  <!-- FOOTER -->
-                 <li>
-                  <footer>
-                    <p id="navFooter">&copy; <meta itemprop="DatePublished" content="2013-08-14"><small style="color: grey; font-size:65%;">2013 Unispon, Inc.</small><a style="font-size:65%;" data-toggle="modal" href="#privacy">    Privacy</a><a style="font-size:65%;" data-toggle="modal" href="#toa">    Terms of Agreement</a></p>
-                  </footer>
-                 </li>
 				<li id = "loginBtn" data-toggle="modal" href="#login" class="btn btn-primary">Login</li>
                 <li id = "registerBtn" data-toggle="modal" href="#register" class="btn btn-primary">Register</li>
 			  </ul>
@@ -93,8 +98,7 @@
             </div>
         </div>
       </div>
-      <div id="navLineTop" style="background-color:#264091; position:fixed; bottom:55px; left:0px; height:1px; width:100%; z-index: 1029; opacity:0.99; filter:alpha(opacity=99);"></div>
-	  <div id="navLine" style="background-color:#264091; position:fixed; bottom:0px; left:0px; height:5px; width:100%; z-index: 100000; opacity:0.99; filter:alpha(opacity=99);"></div>
+	  <div id="navLine" style="background-color:#264091; position:fixed; top:50px; left:0px; height:5px; width:100%; z-index: 100000; opacity:0.99; filter:alpha(opacity=99);"></div>
     </div>
 
     <!-- Carousel
@@ -108,7 +112,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img style="position:fixed" id="c1" src="images/Images/lightflare2.jpg" alt="">
+          <img id="c1" src="images/Images/lightflare2.jpg" alt="">
           <div class="container">
             <div style="color:white" class="carousel-caption">
               <h1>Welcome to <span itemprop="author">Unispon</span>.</h1>
@@ -120,7 +124,7 @@
           </div>
         </div>
         <div class="item">
-          <img style="position:fixed" id="c2" src="images/Images/darkblue.jpg" alt="">
+          <img id="c2" src="images/Images/darkblue.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>How it works?</h1>
@@ -132,7 +136,7 @@
           </div>
         </div>
         <div class="item">
-          <img style="position:fixed"  id="c3" src="images/Images/random.jpg" alt="">
+          <img id="c3" src="images/Images/random.jpg" alt="">
           <div class="container">
             <div style="color:white" class="carousel-caption">
               <h1>Frequently Asked Questions</h1>
@@ -143,136 +147,102 @@
             </div>
           </div>
         </div>
-        <div style="overflow:scroll" class="item">
-          <img style="position:fixed" id="Img1" src="images/Images/random.jpg" alt="">
-          <div class="container">
-            <div style="color:white" class="carousel-caption">
-              <h1>Frequently Asked Questions</h1>
-              <p>Check out the many tough questions we've had to answer.</p>
-                <div class="container marketing">
-
-                  <br/><br/><hr id="Hr1" name="about" class="featurette-divider"><br/><br/><br/>
-	  
-	  
-                  <!-- Three columns of text below the carousel -->
-		
-	              <h2 style="color:black;" class="featurette-heading text-center">How it <span class="text-muted"> works.</span></h2><br/><br/><br/><br/><br/>
-                  <div style="color:black;" class="row">
-                    <div class="col-lg-4">
-                      <img class="img-circle" width="140" height="140" src="images/intro.jpeg">
-                      <h2>Who are we?</h2>
-                      <p>We are a group of individuals dedicated to reduce the pain that clubs/organizations and businesses have to go through during a sponsoship process.</p>
-                      <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                      <img class="img-circle" width="140" height="140" src="images/company.jpg">
-                      <h2>If you are a company...</h2>
-                      <p>We verify and enforce strict rules/mechanisms to provide you you with a library of trustworthy and reliable sponsorship packages. Find the perfect one today!</p>
-                      <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                      <img class="img-circle" width="140" height="140" src="images/club.jpg">
-                      <h2>If you are a club/organization...</h2>
-                      <p>Sign up for free today, get verified, write your sponsorship package, and get sponsored today. It's that easy!</p>
-                      <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                  </div><!-- /.row -->
-	              <br/><br/><br/><br/><br/>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div style="overflow:scroll" class="item">
-          <img style="position:fixed" id="Img2" src="images/Images/random.jpg" alt="">
-          <div class="container">
-            <div style="color:white" class="carousel-caption">
-              <h1>Frequently Asked Questions</h1>
-              <p>Check out the many tough questions we've had to answer.</p>
-                <div class="container marketing">
-
-
-	              <!-- START THE FEATURETTES -->
-                  <br/><hr class="featurette-divider"><br/><br/>
-	  
-	              <div id="faq" name="faq" class="featurette">
-                    <br/><br/><br/>
-                    <h2 style="color:black;" class="featurette-heading text-center">Frequently<span class="text-muted"> Asked Questions</span></h2>
-		            <br/><br/>
-		            <dl style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:black;">
-			            <dt>Who are we?</dt>
-			            <dd><span itemprop="description">We are college students looking to promote campus clubs and organizations. We stand to make lives of sponsoring something as easy as possible for both companies as well as clubs/organizations.</span></dd>
-			            <br/>
-			            <dt>What problem you want to solve?</dt>
-			            <dd>We want to solve the complicated process attached with sponsoring events and organizations.</dd>
-			            <br/>
-			            <dt>Where the problem is happening?</dt>
-			            <dd>This problem is happening nationwide in every major college institution. We’re planning to get jump started from Georgia Tech and Rochester Tech, then eventually expanding to other schools.</dd>	
-			            <br/>
-			            <dt>Why the audience should care?</dt>
-			            <dd>We have two key audience in play here. One group being the companies. We want to attract them with cheap quality sponsorship opportunities across campus. And the other group is the campus organizations themselves. We want to open up much more opportunities for clubs to get sponsored.We are going to get their sponsorships packages to the right businesses and the right people, and at the right time.</dd>
-			            <br/>
-			            <dt>How you propose solving the problem?</dt>
-			            <dd>Our product is going to be a web application that companies goto to find potential sponsorship opportunities on campus. It’s also going to be a place for clubs and organizations to register and get sponsored.</dd>
-			            <br/>
-			            <dt>Can you give a general idea on how companies/clubs use your web app?</dt>
-			            <dd>We will have free registration/sign-ups open to all clubs, organizations, and businesses that are actively sponsorship hunting.</dd>
-			            <br/>
-			            <dd>What clubs/organizations have to do:</dd>
-			            <ul>
-				            <li>Provide us with a sponsorship package*** (Include Estimated Number of Members, description of what the club does and what they stand for, and how long the package is valid for) </li>
-				            <li>Wait to get verified for authenticity/legitamacy.</li>
-				            <li>Get sponsored!</li>
-				            <li>Upload some pics of your sponsored event to show your sponsors, then submit application next year with updated sponsorship packages and updated contact info to get sponsored again!</li>
-			            </ul>
-			            <br/>
-			            <dd>What we will then do:</dd>
-			            <ul>
-				            <li>Automatic Elo Ranking System on quality of sponsorship packages based on history of submitter. (Ex: If a club is consistently submitting packages that are getting sponsored over and over, they will rank higher in the search results)</li>
-				            <li>Allow companies to go through all these applications and filter based on ethnicity, sports, different field of engineerings etc to find the perfect target audience.</li>
-				            <li>Take a certain percentage of the sponsorship money as transaction fee.</li>
-				            <li>Guarantee companies their money correctly spent with pictures of receipts, branded events, etc.</li>
-			            </ul>			
-			            <br/>
-			            <dd>***Sponsorship package is just a list of what the club will do for the company in return for a certain amount of money... (ex: Printing company logo to back of T-Shirts, hosting events with company logo etc...)</dd>
-			            <br/>
-		            </dl>
-	              </div>
-	  
-	             <br/><br/><hr class="featurette-divider"><br/><br/><br/>
-               </div>
-            </div>
-          </div>
-        </div>
-        <div style="overflow:scroll" class="item">
-          <img style="position:fixed" id="Img3" src="images/Images/random.jpg" alt="">
-          <div class="container">
-            <div style="color:white" class="carousel-caption">
-              <h1>Frequently Asked Questions</h1>
-              <p>Check out the many tough questions we've had to answer.</p>
-              <div class="container marketing">
-	                 <!-- Marketing messaging and featurettes
-                    ================================================== -->
-                    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-	  
-                      <div id="contact" name="contact" class="featurette">
-                        <img class="img-responsive img-circle featurette-image pull-right" src="./images/logo.png" itemprop="contentURL">
-                        <h2 style="color:black;" class="featurette-heading">Contact <span class="text-muted">Us</span></h2>
-                        <p style="color:black;" class="lead">We are aiming to be a start-up. Please feel free to reach out to us at cding9@gatech.edu to express your interest/support. Questions, concerns, or comments are welcome as well. Thanks so much for visiting.</p>
-		                <p style="color:black;" class="lead">For more information about the Founder, please visit<a href="http://www.CharlesDing.com" target="_blank"> www.CharlesDing.com</a>.</p>
-	                  </div>
-	                  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                      <!-- /END THE FEATURETTES -->
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div><!-- /.carousel -->
 	  
+	      <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <div class="container marketing">
 
+      <br/><br/><hr id="about" name="about" class="featurette-divider"><br/><br/><br/>
+	  
+	  
+      <!-- Three columns of text below the carousel -->
+		
+	  <h2 style="color:black;" class="featurette-heading text-center">How it <span class="text-muted"> works.</span></h2><br/><br/><br/><br/><br/>
+      <div style="color:black;" class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" width="140" height="140" src="images/intro.jpeg">
+          <h2>Who are we?</h2>
+          <p>We are a group of individuals dedicated to reduce the pain that clubs/organizations and businesses have to go through during a sponsoship process.</p>
+          <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" width="140" height="140" src="images/company.jpg">
+          <h2>If you are a company...</h2>
+          <p>We verify and enforce strict rules/mechanisms to provide you you with a library of trustworthy and reliable sponsorship packages. Find the perfect one today!</p>
+          <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" width="140" height="140" src="images/club.jpg">
+          <h2>If you are a club/organization...</h2>
+          <p>Sign up for free today, get verified, write your sponsorship package, and get sponsored today. It's that easy!</p>
+          <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+	  <br/><br/><br/><br/><br/>
+
+	  
+	  <!-- START THE FEATURETTES -->
+      <br/><hr class="featurette-divider"><br/><br/>
+	  
+	  <div id="faq" name="faq" class="featurette">
+        <br/><br/><br/>
+        <h2 style="color:black;" class="featurette-heading text-center">Frequently<span class="text-muted"> Asked Questions</span></h2>
+		<br/><br/>
+		<dl style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:black;">
+			<dt>Who are we?</dt>
+			<dd><span itemprop="description">We are college students looking to promote campus clubs and organizations. We stand to make lives of sponsoring something as easy as possible for both companies as well as clubs/organizations.</span></dd>
+			<br/>
+			<dt>What problem you want to solve?</dt>
+			<dd>We want to solve the complicated process attached with sponsoring events and organizations.</dd>
+			<br/>
+			<dt>Where the problem is happening?</dt>
+			<dd>This problem is happening nationwide in every major college institution. We’re planning to get jump started from Georgia Tech and Rochester Tech, then eventually expanding to other schools.</dd>	
+			<br/>
+			<dt>Why the audience should care?</dt>
+			<dd>We have two key audience in play here. One group being the companies. We want to attract them with cheap quality sponsorship opportunities across campus. And the other group is the campus organizations themselves. We want to open up much more opportunities for clubs to get sponsored.We are going to get their sponsorships packages to the right businesses and the right people, and at the right time.</dd>
+			<br/>
+			<dt>How you propose solving the problem?</dt>
+			<dd>Our product is going to be a web application that companies goto to find potential sponsorship opportunities on campus. It’s also going to be a place for clubs and organizations to register and get sponsored.</dd>
+			<br/>
+			<dt>Can you give a general idea on how companies/clubs use your web app?</dt>
+			<dd>We will have free registration/sign-ups open to all clubs, organizations, and businesses that are actively sponsorship hunting.</dd>
+			<br/>
+			<dd>What clubs/organizations have to do:</dd>
+			<ul>
+				<li>Provide us with a sponsorship package*** (Include Estimated Number of Members, description of what the club does and what they stand for, and how long the package is valid for) </li>
+				<li>Wait to get verified for authenticity/legitamacy.</li>
+				<li>Get sponsored!</li>
+				<li>Upload some pics of your sponsored event to show your sponsors, then submit application next year with updated sponsorship packages and updated contact info to get sponsored again!</li>
+			</ul>
+			<br/>
+			<dd>What we will then do:</dd>
+			<ul>
+				<li>Automatic Elo Ranking System on quality of sponsorship packages based on history of submitter. (Ex: If a club is consistently submitting packages that are getting sponsored over and over, they will rank higher in the search results)</li>
+				<li>Allow companies to go through all these applications and filter based on ethnicity, sports, different field of engineerings etc to find the perfect target audience.</li>
+				<li>Take a certain percentage of the sponsorship money as transaction fee.</li>
+				<li>Guarantee companies their money correctly spent with pictures of receipts, branded events, etc.</li>
+			</ul>			
+			<br/>
+			<dd>***Sponsorship package is just a list of what the club will do for the company in return for a certain amount of money... (ex: Printing company logo to back of T-Shirts, hosting events with company logo etc...)</dd>
+			<br/>
+		</dl>
+	  </div>
+	  
+	 <br/><br/><hr class="featurette-divider"><br/><br/><br/>
+	  
+      <div id="contact" name="contact" class="featurette">
+        <img class="img-responsive img-circle featurette-image pull-right" src="./images/logo.png" itemprop="contentURL">
+        <h2 style="color:black;" class="featurette-heading">Contact <span class="text-muted">Us</span></h2>
+        <p style="color:black;" class="lead">We are aiming to be a start-up. Please feel free to reach out to us at info@unispon.com to express your interest/support. Questions, concerns, or comments are welcome as well. Thanks so much for visiting.</p>
+		<p style="color:black;" class="lead">For more information about the Founder, please visit<a href="http://www.CharlesDing.com" target="_blank"> www.CharlesDing.com</a>.</p>
+	  </div>
+	  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <!-- /END THE FEATURETTES -->
 
 	<!-- Modals
 	===================================================== -->
@@ -285,21 +255,20 @@
 			<h4 class="modal-title"><strong style="color: black">Login</strong> <small>to <strong style="color: grey">Uni</strong>Spon.com</small></h4>
 		  </div>
 		  <div class="modal-body" style="padding-bottom: 0px;">
-			<form class="form-horizontal" action='php/login.php' method='POST'>
+			<form class="form-horizontal">
 			  <div class="form-group">
 				<label for="inputEmail" class="col-lg-2 control-label">Email</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" id="inputEmail" name="username" placeholder="Email">
+				  <input type="text" class="form-control" id="inputEmail" placeholder="Email">
 				</div>
 			  </div>
 			  <div class="form-group">
 				<label for="inputPassword" class="col-lg-2 control-label">Password</label>
 				<div class="col-lg-10">
-				  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+				  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
 				  <div class="checkbox">
 					<label>
 					  <input type="checkbox"> Remember me
-					  <input type='submit' value='Log in'>
 					</label>
 				  </div>
 				</div>
@@ -308,21 +277,22 @@
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			<button type="button" onclick="alert('Username and Password not Recognized. Please check and try again.')" class="btn btn-primary">Login</button>
+			<button type="button" onclick="login()" class="btn btn-primary">Login</button>
+			<div id="result">
+			test
+			</div>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 	  
-	  
-	</div><!-- /.modal -->
-
     <!--Register Modal -->
 	<div class="modal fade" id="register">
 	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h4 class="modal-title"><strong style="color: black">Login</strong> <small>to <strong style="color: grey">Uni</strong>Spon.com</small></h4>
+			<h4 class="modal-title"><strong style="color: black">Register</strong> <small>for <strong style="color: grey">Uni</strong>Spon.com</small></h4>
 		  </div>
 		  <div class="modal-body" style="padding-bottom: 0px;">
 			<form class="form-horizontal">
@@ -361,8 +331,7 @@
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
-	  
-	  
+        	  
 	</div><!-- /.modal -->
 	
 	<!--Terms of Agreement Modal -->
@@ -515,6 +484,13 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+  
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; <meta itemprop="DatePublished" content="2013-08-14">2013 Unispon, Inc. &middot; <a data-toggle="modal" href="#privacy">Privacy</a> &middot; <a data-toggle="modal" href="#toa">Terms of Agreement</a></p>
+      </footer>
 
     </div><!-- /.container -->
 

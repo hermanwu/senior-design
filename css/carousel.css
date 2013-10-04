@@ -78,10 +78,6 @@ body {
   position: relative;
   z-index: 999; //makes navbar on top of everything else except modal popups
 }
-  #navFooter{
-    margin-top: 12px;
-    margin-right: 15px;
-  }
 
 
 
