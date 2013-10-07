@@ -14,9 +14,8 @@ if(mysqli_connect_errno()){
 	 );
 }
 //-------------------------------------------------connect database
-
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['postname'];
+$password = $_POST['postpassword'];
 
 if($username&&$password)
 {
@@ -26,20 +25,20 @@ if($username&&$password)
 		$row = mysqli_fetch_row($result);	
 	}
 	else{
-		printf('user does not exist');
+		echo('user does not exist');
 	}
 //--------check if password is correct
 	if($row[2] == $password){
-		printf('welcome to unispon');
+		echo('true');
 	}
 	else{
-		printf('sorry the password is wrong');
+		echo('sorry the password is wrong');
 	}
 	mysqli_free_result($result);
 }
 else
 {
-	printf('please type password or username');
+	echo('please type password or username');
 }
 mysqli_close($link)
 ?>

@@ -40,15 +40,23 @@
   ga('create', 'UA-42935217-2', 'unispon.com');
   ga('send', 'pageview');
   
+  <!-- login functionality --->
   function login()
   {
 	var name = $('#inputEmail').val();
-	var age = $('#inputPassword').val();
+	var password = $('#inputPassword').val();
 	
-	$.post('validate.php',{postname:name,postage:age},
+	$.post('php/login.php',{postname:name,postpassword:password},
 	function(data)
 	{
-		$('#reult').html(data);
+		if(data=="true")
+		{
+			window.location = 'clubside/clubHomePage.html';
+		}
+		else
+		{
+		$('#result').html(data);
+		}
 	});
   }
   </script>
@@ -279,7 +287,6 @@
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			<button type="button" onclick="login()" class="btn btn-primary">Login</button>
 			<div id="result">
-			test
 			</div>
 		  </div>
 		</div><!-- /.modal-content -->
