@@ -49,7 +49,11 @@
 	$.post('php/login.php',{postname:name,postpassword:password},
 	function(data)
 	{
-		if(data=="true")
+		if(data=="company")
+		{
+			window.location = 'companyside/companyHomePage.html';
+		}
+		else if(data=="organization")
 		{
 			window.location = 'clubside/clubHomePage.html';
 		}
@@ -265,9 +269,9 @@
 		  <div class="modal-body" style="padding-bottom: 0px;">
 			<form class="form-horizontal">
 			  <div class="form-group">
-				<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+				<label for="inputEmail" class="col-lg-2 control-label">Username</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+				  <input type="text" class="form-control" id="inputEmail" placeholder="Username">
 				</div>
 			  </div>
 			  <div class="form-group">

@@ -50,11 +50,12 @@ Foreign Key (OrganizationId) REFERENCES Organization(OrganizationId)
 
 /* create context*/
 
-INSERT INTO `User`(`Username`, `Password`, `Email`) VALUES ('admin','unispon','zwu36@gatech.edu');
+INSERT INTO `User`(`Username`, `Password`, `Email`) VALUES ('LM','unispon','zwu36@gatech.edu');
+INSERT INTO `User`(`Username`, `Password`, `Email`) VALUES ('CSA','unispon','cding9@gatech.edu');
 
-INSERT INTO `Organization`(`UserId`, `OrganizationSize`, `OrganizationName`, `School`, `OrganizationDescription`) VALUES (1,200,'Chinese Student Association','Georgia Tech','Chinese student association is awesome');
+INSERT INTO `Organization`(`UserId`, `OrganizationSize`, `OrganizationName`, `School`, `OrganizationDescription`) VALUES (9,200,'Chinese Student Association','Georgia Tech','Chinese student association is awesome');
 
-INSERT INTO `Company`(`UserId`, `CompanyName`) VALUES (1,'Liberty Mutual');
+INSERT INTO `Company`(`UserId`, `CompanyName`) VALUES (3,'Liberty Mutual');
 
 
-INSERT INTO `Package`(`PackageName`, `OrganizationId`, `CompanyId`, `Details`, `Price`) VALUES ('dragon boat festival',1,null,'boat boat boat',100);
+INSERT INTO `Package`(`PackageName`, `OrganizationId`, `CompanyId`, `Details`, `Price`) VALUES ('dragon boat festival',6,null,'boat boat boat',100);

@@ -108,5 +108,6 @@ jQuery(document).ready(function () {
 	//alert($(document).height());
 	//alert($(document).width());
 	
+	// load company information
 	
 });
