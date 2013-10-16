@@ -28,13 +28,29 @@
     }
 
     </style>
+	
+	<!-- Function to display the club name on its page -->
+	<script>	
+		function load_OrganizationInfo(){
+			$.post("../php/organizationSide.php",
+			function(data)
+			{
+			var orgName = document.getElementsByClassName("organizationName");
+			var text0 = '<li><a> ' + data + ' </a>';
+			var text1 = '<h2>' + data + ' <small class="badge">Rating #</small></h2>';
+			orgName[0].innerHTML= text0;
+			orgName[1].innerHTML= text1;
+			});
+		}
+	</script>
+	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body onLoad="load_OrganizationInfo();">
      <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -55,7 +71,7 @@
           </ul> -->
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a> Club Name </a>
+            <li class="organizationName"><a> Club Name </a>
             <li><a href="#" class="dropdown dropdown-toggle icon-cogs icon-2x pull-right " data-toggle="dropdown"></a></li>
               
               <ul class="dropdown-menu">
@@ -71,7 +87,7 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h2>Persian Association of RIT Student (PARS) <small class="badge">Rating #</small></h2>
+        <h2 class="organizationName"><small class="badge">Rating #</small></h2>
 
       </div>
     </div>
