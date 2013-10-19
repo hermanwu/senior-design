@@ -73,7 +73,8 @@
 	var type = $('#Text0').val();
 	var pass1 = $('#Password1').val();
 	var pass2 = $('#Password2').val();
-	
+	alert(type);
+	/*
 	$.post('php/register.php',{postname:name,postschool:school,postemail:email,posttype:type,postpassword1:pass1,postpassword2:pass2},
 	function(data)
 	{
@@ -89,7 +90,7 @@
 		{
 		$('#result').html(data);
 		}
-	});
+	});*/
   }
   </script>
 	
@@ -358,7 +359,7 @@
 				  <div class="col-lg-10">
 					<div class="btn-group" data-toggle="buttons">
 					  <label class="btn btn-primary">
-						<input type="radio" name="inputLogType" id="splunk">Company
+						<input type="radio" name="inputLogType" id="text0">Company
 					  </label>
 					  <label class="btn btn-primary">
 						<input type="radio" name="inputLogType" id="pig">Organization

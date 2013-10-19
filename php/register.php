@@ -13,6 +13,7 @@ if(mysqli_connect_errno()){
 	 " (" . mysqli_connect_errno() . ")"
 	 );
 }
+echo "database connected"
 //-------------------------------------------------connect database
 
 $newusername = $_POST['postname'];
@@ -23,6 +24,7 @@ $newpassword = $_POST['postpassword1'];
 $repeatpassword = $_POST['postpassword2'];
 
 $newusertype = $_POST['newusertype'];
+	echo "checking password"
 	if($newpassword !== $repeatpassword)
 	{
 		echo "The passwords you entered do not match";
