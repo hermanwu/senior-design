@@ -70,12 +70,18 @@
 	var name = $('#Text3').val();
 	var school = $('#Text2').val();
 	var email = $('#Text1').val();
-	var type = $('#Text0').val();
+	var check = document.getElementById("blue").checked;
 	var pass1 = $('#Password1').val();
 	var pass2 = $('#Password2').val();
-	alert(type);
-	/*
-	$.post('php/register.php',{postname:name,postschool:school,postemail:email,posttype:type,postpassword1:pass1,postpassword2:pass2},
+	if(check)
+	{
+		type = "Organization";
+	}
+	else
+	{
+		type = "Company";
+	}
+	$.post('php/register.php',{postname:name,postschool:school,postemail:email,postusertype:type,postpassword1:pass1,postpassword2:pass2},
 	function(data)
 	{
 		if(data=="company")
@@ -90,7 +96,7 @@
 		{
 		$('#result').html(data);
 		}
-	});*/
+	});
   }
   </script>
 	
@@ -353,20 +359,12 @@
 				<div class="col-lg-10">
 				  <input type="text" class="form-control" id="Text1" placeholder="Email">
 				</div>
-			  </div>			  
-			  <div class="form-group">
-				  <label for="inputLogType" class="col-lg-2 control-label">User Type</label>
-				  <div class="col-lg-10">
-					<div class="btn-group" data-toggle="buttons">
-					  <label class="btn btn-primary">
-						<input type="radio" name="inputLogType" id="text0">Company
-					  </label>
-					  <label class="btn btn-primary">
-						<input type="radio" name="inputLogType" id="pig">Organization
-					  </label>
-					</div>          
-				  </div>            
-				</div>
+			  </div>
+			  <div class = "form-group">
+				 <label for="inputUserType" class="col-lg-2 control-label">User Type</label>
+				 <input type="radio" name="colors" id="blue" checked="true">Organization<br>
+				 <input type="radio" name="colors" id="green">Company
+			  </div>
 			  <div class="form-group">
 				<label for="inputPassword" class="col-lg-2 control-label">Password</label>
 				<div class="col-lg-10">

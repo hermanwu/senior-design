@@ -13,23 +13,22 @@ if(mysqli_connect_errno()){
 	 " (" . mysqli_connect_errno() . ")"
 	 );
 }
-echo "database connected"
+echo("database connected");
 //-------------------------------------------------connect database
 
 $newusername = $_POST['postname'];
 $newschool = $_POST['postschool'];
 $newemail = $_POST['postemail'];
-$newtype = $_POST['posttype'];
 $newpassword = $_POST['postpassword1'];
 $repeatpassword = $_POST['postpassword2'];
+$newusertype = $_POST['postusertype'];
 
-$newusertype = $_POST['newusertype'];
-	echo "checking password"
+	echo ("checking password");
 	if($newpassword !== $repeatpassword)
 	{
-		echo "The passwords you entered do not match";
+		echo("The passwords you entered do not match");
 	}
-	elseif($newusername&&$newpassword&&$newemail&&)
+	elseif($newusername&&$newpassword&&$newemail)
 	{
 		//encrypt password
 		//$password = md5($password);
@@ -37,7 +36,7 @@ $newusertype = $_POST['newusertype'];
 		//check the length of the input
 		if(strlen($newusername)>25||strlen($newemail)>25)
 		{
-			echo "max limit for username/email are 24 characters";
+			echo("max limit for username/email are 24 characters");
 		}
 		else
 		{
@@ -49,10 +48,11 @@ $newusertype = $_POST['newusertype'];
 		}
 		//---connect database---------------------
 	}
-	else{
-		echo "please fill all fields";
+	else
+	{
+		echo("please fill all fields");
 	}
-}
+
 mysqli_close($link)
 ?>
 
