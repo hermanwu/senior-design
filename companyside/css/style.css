@@ -1,4 +1,3 @@
-
 #logo{
   top: 11px;
   position: relative;
@@ -35,6 +34,7 @@
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
 }
+
 #search > *:last-child > * {
 	border-top-right-radius: 7px;
 	border-bottom-right-radius: 7px;
