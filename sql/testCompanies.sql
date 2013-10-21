@@ -26,3 +26,17 @@ VALUES (@last+5, '1', 'Test Organization1', 'Georgia Tech', 'This is our organiz
 (@last+8, '4', 'Test Organization4', 'Georgia Tech', 'This is our organization, Organization4.'),
 (@last+9, '5', 'Test Organization5', 'Georgia Tech', 'This is our organization, Organization5.');
 
+SELECT @last := LAST_INSERT_ID();
+
+INSERT INTO `package` (PackageName, OrganizationId, Details, Price)
+VALUES ('org1: Package1', @last, 'This is our package1.', '$100'),
+('org1: Package2', @last, 'This is our package2.', '$200'),
+('org1: Package3', @last, 'This is our package3.', '$300'),
+('org2: Package1', @last+1, 'This is our package1.', '$100'),
+('org3: Package1', @last+2, 'This is our package1.', '$100'),
+('org4: Package1', @last+3, 'This is our package1.', '$100'),
+('org5: Package1', @last+4, 'This is our package1.', '$100'),
+('org5: Package2', @last+4, 'This is our package2.', '$200');
+
+
+

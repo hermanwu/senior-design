@@ -49,7 +49,7 @@ Foreign Key (OrganizationId) REFERENCES Organization(OrganizationId)
 );
 
 /* create context*/
-
+/*
 INSERT INTO `User`(`Username`, `Password`, `Email`) VALUES ('LM','unispon','zwu36@gatech.edu');
 INSERT INTO `User`(`Username`, `Password`, `Email`) VALUES ('CSA','unispon','cding9@gatech.edu');
 
@@ -60,3 +60,4 @@ INSERT INTO `Company`(`UserId`, `CompanyName`) VALUES (3,'Liberty Mutual');
 
 INSERT INTO `Package`(`PackageName`, `OrganizationId`, `CompanyId`, `Details`, `Price`) VALUES ('dragon boat festival',6,null,'boat boat boat',100);
 INSERT INTO `Package`(`PackageName`, `OrganizationId`, `CompanyId`, `Details`, `Price`) VALUES ('New Year Celebration',6,null,'New Year, New Year New Year', 200);
+*/
