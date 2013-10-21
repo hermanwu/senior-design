@@ -9,6 +9,7 @@ UserId int NOT NULL AUTO_INCREMENT UNIQUE,
 Username nvarchar(40) NOT NULL UNIQUE,
 Password nvarchar(70) NOT NULL,
 Email nvarchar(100) UNIQUE,
+UserType nvarchar(15) NOT NULL,
 Primary Key (UserId)
 );
 
