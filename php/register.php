@@ -43,6 +43,15 @@ $newusertype = $_POST['postusertype'];
 			//---------check if user exist	
 			$insertQuery = mysqli_query($link, 
 			"Insert into user (username, password, email, usertype) values ('$newusername','$newpassword','$newemail','$newusertype')");
+			$lastInsertedId = $link->insert_id;
+			if($newusertype == "Company") {
+				$insertCompanyQuery = mysqli_query($link,
+				"Insert into company (UserId, CompanyName) values ($lastInsertedId, '$newusername')");
+			}
+			else {
+				$insertClubQuery = mysqli_query($link,
+				"Insert into organization (UserId, OrganizationName, School) values ($lastInsertedId, '$newusername', '$newschool')");
+			}
 			die("your have been registered!");
 			
 		}
