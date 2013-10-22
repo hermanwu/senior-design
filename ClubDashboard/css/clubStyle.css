@@ -3,6 +3,11 @@
   position: relative;
 }
 
+#content{
+  position: relative;
+  top : 50px;
+}
+
 #clubPic {
     float:right;
     margin-top:20px;
@@ -32,4 +37,8 @@
 }
 #packages > li > span {
     float:right;
+}
+
+#logoutBtn{
+margin-top: 6px;
 }
