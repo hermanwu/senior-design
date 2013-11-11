@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Club Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <style type="text/css">
+    
+    #logo{
+      top: 11px;
+      position: relative;
+    }
+
+    #content{
+      position: relative;
+      top : 50px;
+    }
+
+    .clear-style{
+      color: black;
+    }
+
+    .tools{
+      position: relative;
+      top: -30px;
+    }
+
+    </style>
+	
+	<!-- Function to display the club name on its page -->
+	<script>	
+		function load_OrganizationInfo(){
+			$.post("../php/organizationSide.php",
+			function(data)
+			{
+			var orgName = document.getElementsByClassName("organizationName");
+			var text0 = '<li><a> ' + data + ' </a>';
+			var text1 = '<h2>' + data + ' <small class="badge">Rating #</small></h2>';
+			orgName[0].innerHTML= text0;
+			orgName[1].innerHTML= text1;
+			});
+		}
+	</script>
+	
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body onLoad="load_OrganizationInfo();">
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#">UniSpon</a> -->
+          <img id="logo" src="images/logo.png">
+        </div>
+        <div class="collapse navbar-collapse">
+          <!-- In case wanted to add anything to the navbar -->
+          <!-- <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul> -->
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="organizationName"><a> Club Name </a>
+            <li><a href="#" class="dropdown dropdown-toggle icon-cogs icon-2x pull-right " data-toggle="dropdown"></a></li>
+              
+              <ul class="dropdown-menu">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+        
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h2 class="organizationName"><small class="badge">Rating #</small></h2>
+
+      </div>
+    </div>
+
+    <div id="content" class="container jumbotron">
+
+        <table class="table">
+          <tr>
+            <div class="">
+              <div class="panel panel-success panel-default">
+                <div class="panel-heading panel-success">
+                  <h3 class="panel-title">
+                    <span>Package name - Active </span>
+                    <span class="pull-right">
+                      <span class="glyphicon glyphicon-trash"></span>
+                      <span class="glyphicon glyphicon-star"></span>
+                    </span>
+                  </h3>
+                  
+                </div>
+                  <div class="panel-body">
+                    <div class=""> 
+
+                      <blockquote class="pull-left text-muted">
+                        <small>Detail of the package goes here </small>
+                      </blockquote>
+
+                      <a class="pull-right"> $1000000</a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </tr>
+          <tr>
+            <!-- <div class="well"> -->
+
+            <div class="alert alert-warning"> Package name - not active
+               <div class=' pull-right'>
+                    <small class="glyphicon glyphicon-trash"></small>
+                    <small class="glyphicon glyphicon-star"></small>
+                </div>
+                <blockquote class="text-muted">
+                  <small>Detail of the package goes here 
+                    <a class='pull-right'>
+                    $200
+                    </a>
+                  </small>
+                </blockquote>
+            </div>
+          </tr>
+          <tr>
+            <div class="">
+              <div class="panel panel-success panel-default">
+                <div class="panel-heading panel-success">
+                  <h3 class="panel-title">
+                    <a class="glyphicon glyphicon-plus"></a>
+                    
+                  </h3>
+                  
+                </div>
+                  <div class="panel-body">
+                    <div class=""> 
+
+                      <a class="pull-right"></a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </tr>
+
+          <!-- <tr>
+            <div class="">
+              <div class="pull-right container">
+                  <ul class="list-unstyled">
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  
+              </div>
+              <div class="well alert alert-danger"> Package name - scheduled to be removed <a class="pull-right"> $20</a>
+                <blockquote class="text-muted">
+                  <small>Detail of the package goes here </small>
+                </blockquote>
+              </div>
+            </div>
+          </tr> -->
+          
+        </table>
+
+      </div>
+    </div>
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>

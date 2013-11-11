@@ -2,31 +2,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="author" content="Charles Ding">
-	<meta name="description" content="Connecting Businesses to Campus Life. Find your perfect sponsorship packages and sponsors." />
-	<meta name="keywords" content="Sponsorship Sponsorships sponsor sponsors college university club organizations organization clubs universities sponsorships sponsoship Sponsor Sponsors Clubs University Club Find package connecting web portal campuslife oncampussponsorship" />
+    <meta name="author" content="Charles Ding">
+    <meta name="description" content="Connecting Businesses to Campus Life. Find your perfect sponsorship packages and sponsors." />
+    <meta name="keywords" content="Sponsorship Sponsorships sponsor sponsors college university club organizations organization clubs universities sponsorships sponsoship Sponsor Sponsors Clubs University Club Find package connecting web portal campuslife oncampussponsorship" />
 	<meta name="msvalidate.01" content="24002E22C6E110BB9606665A124A8C28" />
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title >Unispon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title >Unispon</title>
 
+<<<<<<< HEAD
 	<!-- Bootstrap core CSS testtest--> 
 	<link href="css/bootstrap.css" rel="stylesheet">
+=======
+    <!-- Bootstrap core CSS --> 
+    <link href="css/bootstrap.css" rel="stylesheet">
+>>>>>>> parent of 94bac1b... update + refactoring
 
 	
-	<!-- Custom styles for this template -->
-	<link href="css/carousel.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
 	
 
-	<!-- Bootstrap core JavaScript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
-	<link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet">
-	<script src="http://vjs.zencdn.net/4.1/video.js"></script>
-	<script src="js/bootstrap.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+    <link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/4.1/video.js"></script>
+    <script src="js/bootstrap.js"></script>
 	<script src="js/main.js"></script>	
 	
 	<!-- Google Analytics
@@ -39,7 +44,66 @@
 
   ga('create', 'UA-42935217-2', 'unispon.com');
   ga('send', 'pageview');
- </script>
+  
+  <!-- login functionality --->
+  function login()
+  {
+	var name = $('#inputEmail').val();
+	var password = $('#inputPassword').val();
+	
+	$.post('php/login.php',{postname:name,postpassword:password},
+	function(data)
+	{
+		if(data=="company")
+		{
+			window.location = 'companyside/companyHomePage.html';
+		}
+		else if(data=="organization")
+		{
+			window.location = 'ClubDashboard';
+		}
+		else
+		{
+		$('#result').html(data);
+		}
+	});
+  }
+  
+  
+    function register()
+  {
+	var name = $('#Text3').val();
+	var school = $('#Text2').val();
+	var email = $('#Text1').val();
+	var check = document.getElementById("blue").checked;
+	var pass1 = $('#Password1').val();
+	var pass2 = $('#Password2').val();
+	if(check)
+	{
+		type = "Organization";
+	}
+	else
+	{
+		type = "Company";
+	}
+	$.post('php/register.php',{postname:name,postschool:school,postemail:email,postusertype:type,postpassword1:pass1,postpassword2:pass2},
+	function(data)
+	{
+		if(data=="company")
+		{
+			window.location = 'companyside/companyHomePage.html';
+		}
+		else if(data=="organization")
+		{
+			window.location = 'clubside/clubHomePage.html';
+		}
+		else
+		{
+		$('#result').html(data);
+		}
+	});
+  }
+  </script>
 	
   </head>
 
@@ -59,127 +123,127 @@
 
   <!-- NAVBAR
 ================================================== -->
-	<div class="navbar-wrapper">
-	  <div class="container">
+    <div class="navbar-wrapper">
+      <div class="container">
 
-		<div id="navbar-example" class="navbar navbar-fixed-top">
-			<button id="mobileMenu" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			</button>
+        <div id="navbar-example" class="navbar navbar-fixed-top">
+    	    <button id="mobileMenu" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+    	      <span class="icon-bar"></span>
+    	      <span class="icon-bar"></span>
+    	      <span class="icon-bar"></span>
+    	    </button>
 			<div>
 				<a id="logo" class="navbar-brand" href="#"><img height="50" src="images/logo.png"></a>
 			</div>
-			<div class="nav-collapse collapse">
-			  <ul class="nav navbar-nav">
-				<li id="homeBtn" class="active"><a href="#myCarousel">Home</a></li>
+            <div class="nav-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li id="homeBtn" class="active"><a href="#myCarousel">Home</a></li>
 				<li id="aboutBtn"><a href="#about">How it works</a></li>
-				<li id="faqBtn"><a href="#faq">Faq</a></li>
-				<li id="contactBtn"><a href="#contact">Contact Us</a></li>
-			  </ul>
+                <li id="faqBtn"><a href="#faq">Faq</a></li>
+                <li id="contactBtn"><a href="#contact">Contact Us</a></li>
+              </ul>
 			  <ul class="nav navbar-nav pull-right">
 				<li id = "loginBtn" data-toggle="modal" href="#login" class="btn btn-primary">Login</li>
-				<li id = "registerBtn" data-toggle="modal" href="#register" class="btn btn-primary">Register</li>
+                <li id = "registerBtn" data-toggle="modal" href="#register" class="btn btn-primary">Register</li>
 			  </ul>
 
-			</div>
-		</div>
-	  </div>
+            </div>
+        </div>
+      </div>
 	  <div id="navLine" style="background-color:#264091; position:fixed; top:50px; left:0px; height:5px; width:100%; z-index: 100000; opacity:0.99; filter:alpha(opacity=99);"></div>
-	</div>
+    </div>
 
-	<!-- Carousel
-	================================================== -->
-	<div id="myCarousel" class="carousel slide">
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-		<li data-target="#myCarousel" data-slide-to="2"></li>
-	  </ol>
-	  <div class="carousel-inner">
-		<div class="item active">
-		  <img id="c1" src="images/Images/lightflare2.jpg" alt="">
-		  <div class="container">
-			<div style="color:white" class="carousel-caption">
-			  <h1>Welcome to <span itemprop="author">Unispon</span>.</h1>
-			  <p><span itemprop="name">Campus Sponsorships Made Easy</span>.</p>
-			  <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#login">Login</a></p>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img id="c1" src="images/Images/lightflare2.jpg" alt="">
+          <div class="container">
+            <div style="color:white" class="carousel-caption">
+              <h1>Welcome to <span itemprop="author">Unispon</span>.</h1>
+              <p><span itemprop="name">Campus Sponsorships Made Easy</span>.</p>
+              <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#login">Login</a></p>
 			  <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#powerpoint">View our Powerpoint Pitch Slideshow</a></p>
-			  <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#videoPitch">View our Video Pitch</a></p>
-			</div>
-		  </div>
-		</div>
-		<div class="item">
-		  <img id="c2" src="images/Images/darkblue.jpg" alt="">
-		  <div class="container">
-			<div class="carousel-caption">
-			  <h1>How it works?</h1>
-			  <p>Check out how you can get your club/organization sponsored today!</p>
-			  <p><a class="btn btn-large btn-primary" href="#about">View</a></p>
+              <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#videoPitch">View our Video Pitch</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img id="c2" src="images/Images/darkblue.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>How it works?</h1>
+              <p>Check out how you can get your club/organization sponsored today!</p>
+              <p><a class="btn btn-large btn-primary" href="#about">View</a></p>
 			  <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#powerpoint">View our Powerpoint Pitch Slideshow</a></p>
-			  <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#videoPitch">View our Video Pitch</a></p>
-			</div>
-		  </div>
-		</div>
-		<div class="item">
-		  <img id="c3" src="images/Images/random.jpg" alt="">
-		  <div class="container">
-			<div style="color:white" class="carousel-caption">
-			  <h1>Frequently Asked Questions</h1>
-			  <p>Check out the many tough questions we've had to answer.</p>
-			  <p><a class="btn btn-large btn-primary" href="#faq">View Faq</a></p>
+              <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#videoPitch">View our Video Pitch</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img id="c3" src="images/Images/random.jpg" alt="">
+          <div class="container">
+            <div style="color:white" class="carousel-caption">
+              <h1>Frequently Asked Questions</h1>
+              <p>Check out the many tough questions we've had to answer.</p>
+              <p><a class="btn btn-large btn-primary" href="#faq">View Faq</a></p>
 			  <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#powerpoint">View our Powerpoint Pitch Slideshow</a></p>
-			  <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#videoPitch">View our Video Pitch</a></p>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-	  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-	</div><!-- /.carousel -->
+              <p><a class="btn btn-large btn-primary" data-toggle="modal" href="#videoPitch">View our Video Pitch</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
 	  
-		  <!-- Marketing messaging and featurettes
-	================================================== -->
-	<!-- Wrap the rest of the page in another container to center all the content. -->
-	<div class="container marketing">
+	      <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <div class="container marketing">
 
-	  <br/><br/><hr id="about" name="about" class="featurette-divider"><br/><br/><br/>
+      <br/><br/><hr id="about" name="about" class="featurette-divider"><br/><br/><br/>
 	  
 	  
-	  <!-- Three columns of text below the carousel -->
+      <!-- Three columns of text below the carousel -->
 		
 	  <h2 style="color:black;" class="featurette-heading text-center">How it <span class="text-muted"> works.</span></h2><br/><br/><br/><br/><br/>
-	  <div style="color:black;" class="row">
-		<div class="col-lg-4">
-		  <img class="img-circle" width="140" height="140" src="images/intro.jpeg">
-		  <h2>Who are we?</h2>
-		  <p>We are a group of individuals dedicated to reduce the pain that clubs/organizations and businesses have to go through during a sponsoship process.</p>
-		  <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
-		</div><!-- /.col-lg-4 -->
-		<div class="col-lg-4">
-		  <img class="img-circle" width="140" height="140" src="images/company.jpg">
-		  <h2>If you are a company...</h2>
-		  <p>We verify and enforce strict rules/mechanisms to provide you you with a library of trustworthy and reliable sponsorship packages. Find the perfect one today!</p>
-		  <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
-		</div><!-- /.col-lg-4 -->
-		<div class="col-lg-4">
-		  <img class="img-circle" width="140" height="140" src="images/club.jpg">
-		  <h2>If you are a club/organization...</h2>
-		  <p>Sign up for free today, get verified, write your sponsorship package, and get sponsored today. It's that easy!</p>
-		  <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
-		</div><!-- /.col-lg-4 -->
-	  </div><!-- /.row -->
+      <div style="color:black;" class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" width="140" height="140" src="images/intro.jpeg">
+          <h2>Who are we?</h2>
+          <p>We are a group of individuals dedicated to reduce the pain that clubs/organizations and businesses have to go through during a sponsoship process.</p>
+          <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" width="140" height="140" src="images/company.jpg">
+          <h2>If you are a company...</h2>
+          <p>We verify and enforce strict rules/mechanisms to provide you you with a library of trustworthy and reliable sponsorship packages. Find the perfect one today!</p>
+          <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" width="140" height="140" src="images/club.jpg">
+          <h2>If you are a club/organization...</h2>
+          <p>Sign up for free today, get verified, write your sponsorship package, and get sponsored today. It's that easy!</p>
+          <p><a class="btn btn-default" data-toggle="modal" href="#powerpoint">Learn more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
 	  <br/><br/><br/><br/><br/>
 
 	  
 	  <!-- START THE FEATURETTES -->
-	  <br/><hr class="featurette-divider"><br/><br/>
+      <br/><hr class="featurette-divider"><br/><br/>
 	  
 	  <div id="faq" name="faq" class="featurette">
-		<br/><br/><br/>
-		<h2 style="color:black;" class="featurette-heading text-center">Frequently<span class="text-muted"> Asked Questions</span></h2>
+        <br/><br/><br/>
+        <h2 style="color:black;" class="featurette-heading text-center">Frequently<span class="text-muted"> Asked Questions</span></h2>
 		<br/><br/>
 		<dl style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:black;">
 			<dt>Who are we?</dt>
@@ -223,14 +287,14 @@
 	  
 	 <br/><br/><hr class="featurette-divider"><br/><br/><br/>
 	  
-	  <div id="contact" name="contact" class="featurette">
-		<img class="img-responsive img-circle featurette-image pull-right" src="./images/logo.png" itemprop="contentURL">
-		<h2 style="color:black;" class="featurette-heading">Contact <span class="text-muted">Us</span></h2>
-		<p style="color:black;" class="lead">We are aiming to be a start-up. Please feel free to reach out to us at info@unispon.com to express your interest/support. Questions, concerns, or comments are welcome as well. Thanks so much for visiting.</p>
+      <div id="contact" name="contact" class="featurette">
+        <img class="img-responsive img-circle featurette-image pull-right" src="./images/logo.png" itemprop="contentURL">
+        <h2 style="color:black;" class="featurette-heading">Contact <span class="text-muted">Us</span></h2>
+        <p style="color:black;" class="lead">We are aiming to be a start-up. Please feel free to reach out to us at info@unispon.com to express your interest/support. Questions, concerns, or comments are welcome as well. Thanks so much for visiting.</p>
 		<p style="color:black;" class="lead">For more information about the Founder, please visit<a href="http://www.CharlesDing.com" target="_blank"> www.CharlesDing.com</a>.</p>
 	  </div>
 	  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	  <!-- /END THE FEATURETTES -->
+      <!-- /END THE FEATURETTES -->
 
 	<!-- Modals
 	===================================================== -->
@@ -271,9 +335,9 @@
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+    </div><!-- /.modal -->
 	  
-	<!--Register Modal -->
+    <!--Register Modal -->
 	<div class="modal fade" id="register">
 	  <div class="modal-dialog">
 		<div class="modal-content">
@@ -283,16 +347,16 @@
 		  </div>
 		  <div class="modal-body" style="padding-bottom: 0px;">
 			<form class="form-horizontal">
-			  <div class="form-group">
+              <div class="form-group">
 				<label for="inputName" class="col-lg-2 control-label">Username</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" id="Text3" placeholder="create a username for your organization">
+				  <input type="text" class="form-control" id="Text3" placeholder="Eg: John Doe">
 				</div>
 			  </div>
 			  <div class="form-group">
 				<label for="inputSchool" class="col-lg-2 control-label">Organization Name</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" id="Text2" placeholder="Eg: Microsoft / Chinese Student Association">
+				  <input type="text" class="form-control" id="Text2" placeholder="Eg: Georgia Institute of Technology">
 				</div>
 			  </div>
 			  <div class="form-group">
@@ -310,7 +374,7 @@
 				<label for="inputPassword" class="col-lg-2 control-label">Password</label>
 				<div class="col-lg-10">
 				  <input type="password" class="form-control" id="Password1" placeholder="Password">
-				  <input type="password" class="form-control" id="Password2" placeholder="Re-type Password">
+                  <input type="password" class="form-control" id="Password2" placeholder="Re-type Password">
 				  <div class="checkbox">
 				  </div>
 				</div>
@@ -323,18 +387,18 @@
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
-			  
+        	  
 	</div><!-- /.modal -->
 	
 	<!--Terms of Agreement Modal -->
   <div class="modal fade" id="toa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		  <h4 class="modal-title">Unispon's Terms of Agreement</h4>
-		</div>
-		<div class="modal-body">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Unispon's Terms of Agreement</h4>
+        </div>
+        <div class="modal-body">
 			<dl style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:black;">
 				<dt>Welcome to Unispon!</dt>
 				<br/>
@@ -393,23 +457,23 @@
 				<dd>For information, please send email out to cding9@gatech.edu</dd>
 				<br/>
 			</dl>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-		</div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
  
   <!--Privacy Modal -->
   <div class="modal fade" id="privacy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		  <h4 class="modal-title">Unispon's Privacy</h4>
-		</div>
-		<div class="modal-body">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Unispon's Privacy</h4>
+        </div>
+        <div class="modal-body">
 			<dl style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:black;">
 				<dt>Privacy and Copyright Protection</dt>
 				<br/>
@@ -420,71 +484,71 @@
 				<dd>This is not for commercial use. All ideas are property of Unispon. Pictures and Images obtained from Google Images Search Engine, with sole exception of our Logo. We reserve all rights to our ideas and logo.</dd>
 				<br/>
 			</dl>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-		</div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
   
   <!--PowerPoint Modal -->
   <div class="modal fade" id="powerpoint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		  <h4 class="modal-title">Unispon's Intro - Who are we? Why we're here?</h4>
-		</div>
-		<div class="modal-body">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Unispon's Intro - Who are we? Why we're here?</h4>
+        </div>
+        <div class="modal-body">
 			<dl style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:black;">
 				<dt>Our PowerPoint Pitch.</dt>
 				<br/>
-				<iframe src="https://skydrive.live.com/embed?cid=B21A3EEAC7744697&resid=B21A3EEAC7744697%21409&authkey=AIW97rk7POpKww4&em=2"width="100%" height="426px" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://skydrive.live.com/embed?cid=B21A3EEAC7744697&resid=B21A3EEAC7744697%21409&authkey=AIW97rk7POpKww4&em=2"width="100%" height="426px" frameborder="0" scrolling="no"></iframe>
 			</dl>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-		</div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
   <!--Video Pitch Modal -->
   <div class="modal fade" id="videoPitch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		  <h4 class="modal-title">Unispon's Video Pitch</h4>
-		</div>
-		<div class="modal-body">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Unispon's Video Pitch</h4>
+        </div>
+        <div class="modal-body">
 			<dl style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:black;">
 				<dt>Our PowerPoint Pitch.</dt>
 				<br/>
-				<video id="my_video_1" class="video-js vjs-default-skin" controls
-					 preload="auto" width="100%" height="426px" poster="images/logo.png"
-					 data-setup="{}">
-					 <source src="videos/unispon.mp4" type='video/mp4'>
-					 <source src="videos/unispon.webm" type='video/webm'>
-				</video>
+                <video id="my_video_1" class="video-js vjs-default-skin" controls
+                     preload="auto" width="100%" height="426px" poster="images/logo.png"
+                     data-setup="{}">
+                     <source src="videos/unispon.mp4" type='video/mp4'>
+                     <source src="videos/unispon.webm" type='video/webm'>
+                </video>
 			</dl>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-		</div>
-	  </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
   
 
-	  <!-- FOOTER -->
-	  <footer>
-		<p class="pull-right"><a href="#">Back to top</a></p>
-		<p>&copy; <meta itemprop="DatePublished" content="2013-08-14">2013 Unispon, Inc. &middot; <a data-toggle="modal" href="#privacy">Privacy</a> &middot; <a data-toggle="modal" href="#toa">Terms of Agreement</a></p>
-	  </footer>
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; <meta itemprop="DatePublished" content="2013-08-14">2013 Unispon, Inc. &middot; <a data-toggle="modal" href="#privacy">Privacy</a> &middot; <a data-toggle="modal" href="#toa">Terms of Agreement</a></p>
+      </footer>
 
-	</div><!-- /.container -->
+    </div><!-- /.container -->
 
 
 
