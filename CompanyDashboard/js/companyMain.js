@@ -1,8 +1,8 @@
 function logout(){
 	var r = confirm("Do you really want to log out?");
-    if (r) {
-       window.location.href = '../php/logout.php'
-    }
+	if (r) {
+	   window.location.href = '../php/logout.php'
+	}
 }
 
 $(document).ready(function () {	
@@ -10,20 +10,20 @@ $(document).ready(function () {
 	/** Scrollspy Implemented for Scroll instead of previous nasty code**/
 	
 	/**Parralax Functionality**/
-    var $window = $(window);
-    $('div[data-type="background"]').each(function(){
-        var $bgobj = $(this); // assigning the object
-     
-        $(window).scroll(function() {
-            var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
-             
-            // Put together our final background position
-            var coords = '50% '+ yPos + 'px'; 
+	var $window = $(window);
+	$('div[data-type="background"]').each(function(){
+		var $bgobj = $(this); // assigning the object
+	 
+		$(window).scroll(function() {
+			var yPos = -($window.scrollTop() / $bgobj.data('speed')); 
+			 
+			// Put together our final background position
+			var coords = '50% '+ yPos + 'px'; 
  
-            // Move the background
-            $bgobj.css({ backgroundPosition: coords });
-        }); 
-    }); 
+			// Move the background
+			$bgobj.css({ backgroundPosition: coords });
+		}); 
+	}); 
 	
 
 	/**HomeScreen/Background Dynamic Visual Settings**/
@@ -33,26 +33,26 @@ $(document).ready(function () {
 	
 	/*Refreshes Home Page to have optimal Visual settings*/
 	function refreshHomePageVisuals() {
-	    //Need to loop through array of those to find highest value of height
-	    var homeTextHeightArray = document.getElementsByClassName('carousel-caption');
-	    homeTextHeight = 0;
-	    for (var i = 0; i < homeTextHeightArray.length; i++) {
-	        if ($(homeTextHeightArray[i]).height() > homeTextHeight) {
-	            homeTextHeight = $(homeTextHeightArray[i]).height();
-	        }
-	    }
+		//Need to loop through array of those to find highest value of height
+		var homeTextHeightArray = document.getElementsByClassName('carousel-caption');
+		homeTextHeight = 0;
+		for (var i = 0; i < homeTextHeightArray.length; i++) {
+			if ($(homeTextHeightArray[i]).height() > homeTextHeight) {
+				homeTextHeight = $(homeTextHeightArray[i]).height();
+			}
+		}
 
-	    if ($(window).width() > 768) {
-	        heightOffset = 80;
-	    } else {
-	        heightOffset = 80 + 10;
-	    }
-	    $('.carousel .item').css("height", $(window).height() + heightOffset);
-	    $('.carousel .item  img').css("height", $(window).height() + heightOffset);
-	    $('.carousel-caption').css("margin-bottom", ($(window).height() - homeTextHeight - 45) / 2); //45px is a minor tweak to center text...Not very noticable (I'm perfectionist)   
+		if ($(window).width() > 768) {
+			heightOffset = 80;
+		} else {
+			heightOffset = 80 + 10;
+		}
+		$('.carousel .item').css("height", $(window).height() + heightOffset);
+		$('.carousel .item  img').css("height", $(window).height() + heightOffset);
+		$('.carousel-caption').css("margin-bottom", ($(window).height() - homeTextHeight - 45) / 2); //45px is a minor tweak to center text...Not very noticable (I'm perfectionist)   
 		$('#c1').load(function () {
 			$('#backgroundImage').css("top", $(window).height());
-	        $('#backgroundImage').css("height", $(document).height()-$(window).height());
+			$('#backgroundImage').css("height", $(document).height()-$(window).height());
 		}).each(function(){
 			if(this.complete){
 				$(this).trigger('load');
@@ -88,7 +88,7 @@ $(document).ready(function () {
 	refreshHomePageVisuals();
 		
 	/*Loads optimal home visuals when User Resize/Zoom*/
-    $(window).resize(function (){ 
+	$(window).resize(function (){ 
 		refreshHomePageVisuals();
 	});
 	var cachceBugFix = setInterval(function() {
@@ -117,7 +117,6 @@ function load(){
 	initTabView();
 }
 
-
 function load_CompanyInfo(){
 	$.post("../php/companySide.php",
 	function(data)
@@ -137,31 +136,31 @@ function load_allPackages(){
 }
 
 function initTabView(){
-            var x = document.getElementsByClassName('tab-view')
-            for(var i=0; i < x.length; i++) {
-              x[i].onclick = displayTab;
-            }
+			var x = document.getElementsByClassName('tab-view')
+			for(var i=0; i < x.length; i++) {
+			  x[i].onclick = displayTab;
+			}
 
-            var prevViewedTab = null;
+			var prevViewedTab = null;
 
-            function displayTab(e) {
-            var idOfTabToDisplay = this.getAttribute("data-tab")
+			function displayTab(e) {
+			var idOfTabToDisplay = this.getAttribute("data-tab")
 
-            if(prevViewedTab) {
-              prevViewedTab.style.display = 'none';
-            }
+			if(prevViewedTab) {
+			  prevViewedTab.style.display = 'none';
+			}
 
-            var tabToDisplay = document.getElementById(idOfTabToDisplay);
-              tabToDisplay.style.display = 'block';
-              prevViewedTab = tabToDisplay;
-            }
+			var tabToDisplay = document.getElementById(idOfTabToDisplay);
+			  tabToDisplay.style.display = 'block';
+			  prevViewedTab = tabToDisplay;
+			}
 
-            var defaultTab = document.getElementsByClassName('default-tab')
-              if (defaultTab.length) {
-                defaultTab[0].style.display = 'block';
-                prevViewedTab = defaultTab[0];
-              }
-          }
+			var defaultTab = document.getElementsByClassName('default-tab')
+			  if (defaultTab.length) {
+				defaultTab[0].style.display = 'block';
+				prevViewedTab = defaultTab[0];
+			  }
+		  }
 });
 
 
