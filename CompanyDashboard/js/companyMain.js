@@ -168,12 +168,11 @@ function search(){
 	$.post("../php/search.php", {postsearch: searchValue},
 	function(data)
 	{	
-		alert(data);
 		$("#packages").empty();
 		$.each(data.result, function(){
 			$("#packages").append("<li class=\"list-group-item\">"+this['Package Name']+": "+this['Detail']+"<span>"+this['Price']+"</span></li>");
 		});
-	});
+	}, 'json');
 }
 
 
