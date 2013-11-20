@@ -1,3 +1,17 @@
+function showUploadImage(){
+	$("#file").show('slow');
+	$("#submit").show('slow');
+}
+
+function hideUploadImage(){
+	setTimeout(function(){
+		$("#file").hide('slow');
+		$("#submit").hide('slow');
+	}, 2000);	
+}
+
+
+
 //add a package to database when click the submit button
 function submit() {
 	var packageName = $('#packageName').val();

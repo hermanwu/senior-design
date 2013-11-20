@@ -1,6 +1,6 @@
-/* create a unispon database before you do anything
-CREATE DATABASE if not exists Unispon
-*/
+/* create a unispon database before you do anything*/
+CREATE DATABASE if not exists unispon;
+
 
 /*create four tables*/
 CREATE TABLE if not exists User
@@ -22,6 +22,7 @@ OrganizationSize int,
 OrganizationName nvarchar(100) NOT NULL,
 School nvarchar(50) NOT NULL,
 OrganizationDescription longtext,
+OrganizationPhoto varchar(30),
 Primary Key (OrganizationId),
 Foreign Key (UserId) REFERENCES USER(UserId)
 );
