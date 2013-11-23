@@ -1,4 +1,5 @@
 <?php
+
 //-----start a session------------
 	session_start();
 
@@ -30,7 +31,13 @@ if($username&&$password)
 		echo('user does not exist');
 	}
 //--------check if password is correct
-	if($row["Password"] == $password){
+require('PasswordHash.php');
+// Base-2 logarithm of the iteration count used for password stretching
+$hash_cost_log2 = 8;
+// Do we require the hashes to be portable to older systems (less secure)?
+$hash_portable = FALSE;
+$hasher = new PasswordHash($hash_cost_log2, $hash_portable);
+	if($hasher->CheckPassword($password, $row["Password"])){
 		$userId = $row["UserId"];
         $userEmail = $row["Email"];
 //--------check if userId belongs to company table or club table

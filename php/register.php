@@ -1,4 +1,5 @@
 <?php
+require('PasswordHash.php');
 
 	session_start();
 //---connect database---------------------
@@ -29,7 +30,10 @@ $newusertype = $_POST['postusertype'];
 	elseif($newusername&&$newpassword&&$newemail)
 	{
 		//encrypt password
-		//$password = md5($password);
+		$pwdHasher = new PasswordHash(8, FALSE);
+
+		// $hash is what you would store in your database
+		$hash = $pwdHasher->HashPassword( $newpassword );
 		
 		//check the length of the input
 		if(strlen($newusername)>25||strlen($newemail)>25)
@@ -40,7 +44,7 @@ $newusertype = $_POST['postusertype'];
 		{
 			//---------check if user exist	
 			$insertQuery = mysqli_query($link, 
-			"Insert into user (username, password, email, usertype) values ('$newusername','$newpassword','$newemail','$newusertype')");
+			"Insert into user (username, password, email, usertype) values ('$newusername','$hash','$newemail','$newusertype')");
 			$lastInsertedId = $link->insert_id;
 			$_SESSION['userId'] = $lastInsertedId;
 			$_SESSION['email'] = $newemail;
