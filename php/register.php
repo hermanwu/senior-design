@@ -1,5 +1,6 @@
 <?php
 
+	session_start();
 //---connect database---------------------
 $dbhost = "localhost";	
 $dbuser = "root";
@@ -13,17 +14,14 @@ if(mysqli_connect_errno()){
 	 " (" . mysqli_connect_errno() . ")"
 	 );
 }
-echo("database connected");
 //-------------------------------------------------connect database
 
 $newusername = $_POST['postname'];
-$newschool = $_POST['postschool'];
+$newOrganizationName = $_POST['postOrg'];
 $newemail = $_POST['postemail'];
 $newpassword = $_POST['postpassword1'];
 $repeatpassword = $_POST['postpassword2'];
 $newusertype = $_POST['postusertype'];
-
-	echo ("checking password");
 	if($newpassword !== $repeatpassword)
 	{
 		echo("The passwords you entered do not match");
@@ -44,15 +42,18 @@ $newusertype = $_POST['postusertype'];
 			$insertQuery = mysqli_query($link, 
 			"Insert into user (username, password, email, usertype) values ('$newusername','$newpassword','$newemail','$newusertype')");
 			$lastInsertedId = $link->insert_id;
+			$_SESSION['userId'] = $lastInsertedId;
+			$_SESSION['email'] = $newemail;
 			if($newusertype == "Company") {
 				$insertCompanyQuery = mysqli_query($link,
-				"Insert into company (UserId, CompanyName) values ($lastInsertedId, '$newusername')");
+				"Insert into company (UserId, CompanyName) values ($lastInsertedId, '$newOrganizationName')");
+				echo("company");
 			}
 			else {
 				$insertClubQuery = mysqli_query($link,
-				"Insert into organization (UserId, OrganizationName, School) values ($lastInsertedId, '$newusername', '$newschool')");
+				"Insert into organization (UserId, OrganizationName, School) values ($lastInsertedId, '$newOrganizationName', 'Georgia Institute of Technology')");
+				echo("organization");
 			}
-			die("your have been registered!");
 			
 		}
 		//---connect database---------------------
@@ -64,7 +65,3 @@ $newusertype = $_POST['postusertype'];
 
 mysqli_close($link)
 ?>
-
-<html>
-
-</html>

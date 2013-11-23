@@ -32,9 +32,11 @@ if($username&&$password)
 //--------check if password is correct
 	if($row["Password"] == $password){
 		$userId = $row["UserId"];
+        $userEmail = $row["Email"];
 //--------check if userId belongs to company table or club table
 		$result_organization = mysqli_query($link, "select * from organization where UserId = '$userId'");
 		$_SESSION['userId'] = $userId;
+        $_SESSION['email'] = $userEmail;
 		//$detailRow = mysqli_fetch_array($detailResult, MYSQL_ASSOC);
 		//$organizationName = $detailRow["OrganizationName"];
 		if(mysqli_num_rows($result_organization) == 0){
