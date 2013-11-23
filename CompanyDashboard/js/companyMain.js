@@ -165,14 +165,25 @@ function initTabView(){
 
 function search(){
 	var searchValue = $('#searchValue').val();
-	$.post("../php/search.php", {postsearch: searchValue},
-	function(data)
-	{	
-		$("#packages").empty();
-		$.each(data.result, function(){
-			$("#packages").append("<li class=\"list-group-item\">"+this['Package Name']+": "+this['Detail']+"<span>"+this['Price']+"</span></li>");
+	if(searchValue == "") {
+		$.getJSON("../php/getAllPackages.php", function(data)
+		{	
+			$("#packages").empty();
+			$.each(data.result, function(){
+				$("#packages").append("<li class=\"list-group-item\">"+this['Package Name']+": "+this['Detail']+"<span>"+this['Price']+"</span></li>");
+			});
 		});
-	}, 'json');
+	}
+	else {
+		$.post("../php/search.php", {postsearch: searchValue},
+		function(data)
+		{	
+			$("#packages").empty();
+			$.each(data.result, function(){
+				$("#packages").append("<li class=\"list-group-item\">"+this['Package Name']+": "+this['Detail']+"<span>"+this['Price']+"</span></li>");
+			});
+		}, 'json');
+	}
 }
 
 
